@@ -2,64 +2,138 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chethan BV - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --bg-color: #f5f7fa;
+            --text-color: #222;
+            --section-bg: #fff;
+            --primary: #3F51B5;
+            --gradient: linear-gradient(135deg, #3F51B5, #2196F3);
+        }
+
+        body.dark {
+            --bg-color: #121212;
+            --text-color: #eee;
+            --section-bg: #1e1e1e;
+            --primary: #90CAF9;
+            --gradient: linear-gradient(135deg, #1f1f1f, #333);
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         header {
-            background-color: #4CAF50;
+            background: var(--gradient);
             color: white;
-            padding: 20px;
+            padding: 40px 20px;
             text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        #darkToggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        #darkToggle img {
+            width: 28px;
+            height: 28px;
         }
 
         section {
-            padding: 20px;
-            margin: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 30px;
+            background: var(--section-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        section:nth-of-type(n+2) {
+            animation-delay: calc(0.2s * var(--order));
         }
 
         h2 {
-            color: #4CAF50;
+            color: var(--primary);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary);
+            padding-left: 12px;
         }
 
         ul {
             list-style-type: none;
-            padding: 0;
         }
 
         ul li {
-            margin-bottom: 10px;
-        }
-
-        footer {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            margin-bottom: 12px;
         }
 
         a {
-            color: #4CAF50;
+            color: var(--primary);
             text-decoration: none;
         }
 
         a:hover {
             text-decoration: underline;
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            section {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -67,110 +141,114 @@
 <body>
     <header>
         <h1>Chethan BV</h1>
-        <p>Eager to contribute my skills and knowledge as a fresher to expand my knowledge and to learn new skills, new
-            technologies, and to begin my career in a reputed professional environment.</p>
+        <p>Aspiring Software Developer | Passionate about building impactful solutions</p>
+        <button id="darkToggle" aria-label="Toggle Dark Mode">
+            <img src="https://cdn-icons-png.flaticon.com/512/1146/1146869.png" alt="Moon icon for dark mode">
+        </button>
     </header>
 
-    <section id="contact">
-        <h2>Contact Information</h2>
-        <ul>
-            <li>Phone: 6366036996, 7892176357</li>
-            <li>Email: <a href="mailto:bvbvchethan1@gmail.com">bvbvchethan1@gmail.com</a></li>
-            <li>LinkedIn: <a href="https://www.linkedin.com/in/chethan-bv-4810b2255" target="_blank">Chethan BV</a></li>
-        </ul>
-    </section>
+    <main>
+        <section id="contact" style="--order:1">
+            <h2>Contact Information</h2>
+            <ul class="contact-info">
+                <li><strong>Location:</strong> Madikeri, Kodagu, Karnataka</li>
+                <li><strong>Phone:</strong> +91 6366036996</li>
+                <li><strong>Email:</strong> <a href="mailto:bvbvchethan1@gmail.com">bvbvchethan1@gmail.com</a></li>
+                <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/chethan-bv-4810b2255"
+                        target="_blank">Chethan BV</a></li>
+                <li><strong>GitHub:</strong> <a href="https://github.com/Bvchethan"
+                        target="_blank">github.com/Bvchethan</a></li>
+            </ul>
+        </section>
 
-    <section id="education">
-        <h2>Education</h2>
-        <ul>
-            <li>
-                <strong>Bachelor of Computer Applications</strong><br>
-                Cauvery College, Gonikoppal, Kodagu<br>
-                Mangalore University, 2024<br>
-                CGPA: 7.93
-            </li>
-            <li>
-                <strong>Pre-University</strong><br>
-                St. Joseph PU College, Madikeri, Kodagu, 2021<br>
-                Commerce (EBCA), Percentage: 64%
-            </li>
-            <li>
-                <strong>SSLC</strong><br>
-                Kendriya Vidyalaya, Kodagu, Madikeri, 2019<br>
-                Percentage: 64%
-            </li>
-        </ul>
-    </section>
-    <h1>Hello, Git!</h1>
+        <section id="summary" style="--order:2">
+            <h2>Summary</h2>
+            <p>
+                Offering a strong foundation in analytical thinking and problem-solving, eager to learn and develop in a
+                dynamic environment. Brings the ability to quickly grasp new concepts and skills in tech analysis and
+                project management. Ready to use and develop these skills in a Developer role.
+            </p>
+        </section>
 
+        <section id="experience" style="--order:3">
+            <h2>Work Experience</h2>
+            <ul>
+                <li><strong>Graduate Trainee, TCS - Hyderabad</strong><br>Nov 2024 – Present<br>Supported project teams
+                    with research, contributed to decision-making, and enhanced collaboration through group work and
+                    innovation.</li>
+                <li><strong>Junior Software Engineer (Internship), SP Tech - Bangalore</strong><br>Feb 2024 – Jun
+                    2024<br>Completed a certified internship as a Junior Software Engineer. Delivered high-quality code
+                    and contributed to project success.</li>
+            </ul>
+        </section>
 
-    <section id="skills">
-        <h2>Technical Skills</h2>
-        <ul>
-            <li>Programming Languages: Python</li>
-            <li>Frontend:html , css , JavaScript</li>
-            <li>backend :php</li>
-            <li>Database: MySQL</li>
-            <li>Web Development, Mobile App Development, Cyber Security</li>
-        </ul>
-    </section>
+        <section id="education" style="--order:4">
+            <h2>Education</h2>
+            <ul>
+                <li><strong>Masters of Computer Applications (MCA)</strong> – Jain University, Bangalore (Expected: Mar
+                    2026)<br>Specialization: Advanced Computer Application<br>CGPA: 8</li>
+                <li><strong>Bachelor of Computer Applications (BCA)</strong> – Mangalore University (Completed: Jun
+                    2024)<br>Specialization: Computer Application<br>CGPA: 8</li>
+            </ul>
+        </section>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <ul>
-            <li>
-                <strong>Travel Website</strong><br>
-                Developed using HTML, CSS, and JavaScript. A website containing information and features of travel
-                destinations.
-            </li>
-            <li>
-                <strong>Simple Dictionary</strong><br>
-                Developed using HTML, CSS, and JavaScript with API integration. Available on <a
-                    href="https://github.com/Bvchethan" target="_blank">GitHub</a>.
-            </li>
-        </ul>
-    </section>
+        <section id="skills" style="--order:5">
+            <h2>Technical Skills</h2>
+            <ul>
+                <li>Java</li>
+                <li>React</li>
+                <li>HTML, CSS (Tailwind), JavaScript</li>
+                <li>MySQL</li>
+                <li>Git, GitHub</li>
+            </ul>
+        </section>
 
-    <section id="certificates">
-        <h2>Certificates</h2>
-        <ul>
-            <li>Certified in Front End Development - CSS, Great Learning Academy (June 2023)</li>
-            <li>Certified in Cloud Computing (June 2023)</li>
-            <li>Certified in Digital Fluency</li>
-        </ul>
-    </section>
+        <section id="projects" style="--order:6">
+            <h2>Projects</h2>
+            <ul>
+                <li><strong>Tour Webpage</strong> – Built a responsive website using HTML, CSS, and JavaScript
+                    showcasing travel destinations and guide.</li>
+                <li><strong>Movie Web Application</strong> – Developed a dynamic app using React, HTML, CSS, and
+                    JavaScript APIs to browse and search movies.</li>
+                <li><strong>Student Portal</strong> – Created a functional portal using PHP, HTML, CSS, and JavaScript
+                    for student data management.</li>
+            </ul>
+        </section>
 
-    <section id="languages">
-        <h2>Languages</h2>
-        <ul>
-            <li>English</li>
-            <li>Hindi</li>
-            <li>Kannada</li>
-        </ul>
-    </section>
-    <section>
-        <h2>Skills</h2>
-        <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-        </ul>
-    </section>
+        <section id="certifications" style="--order:7">
+            <h2>Certifications</h2>
+            <ul>
+                <li>Certified in Front-End Development - CSS, Great Learning Academy</li>
+                <li>Certified in Python, Hope Foundation (Jun 2023 – Dec 2023)</li>
+            </ul>
+        </section>
 
-    <section id="hobbies">
-        <h2>Hobbies</h2>
-        <ul>
-            <li>Photography</li>
-            <li>Web Designing</li>
-            <li>Gaming</li>
-            <li>Football</li>
-            <li>Travelling</li>
-        </ul>
-    </section>
+        <section id="languages" style="--order:8">
+            <h2>Languages Known</h2>
+            <ul>
+                <li>English</li>
+                <li>Hindi</li>
+                <li>Kannada</li>
+                <li>Telugu</li>
+            </ul>
+        </section>
+
+        <section id="declaration" style="--order:9">
+            <h2>Declaration</h2>
+            <p>I hereby declare that the above written particulars are true to the best of my knowledge and belief.</p>
+        </section>
+    </main>
 
     <footer>
         <p>&copy; 2024 Chethan BV. All rights reserved.</p>
-        <h1>helooooo </h1>
     </footer>
+
+    <script>
+        const toggle = document.getElementById("darkToggle");
+        toggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark");
+        });
+    </script>
 </body>
 
 </html>
